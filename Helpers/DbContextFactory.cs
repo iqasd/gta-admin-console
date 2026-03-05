@@ -14,20 +14,9 @@ public static class DbContextFactory
             .Build();
 
         var builder = new DbContextOptionsBuilder<AppDbContext>();
-        var provider = configuration["DatabaseProvider"]?.Trim().ToLowerInvariant() ?? "sqlite";
-
-        if (provider == "mysql")
-        {
-            var mysqlConnection = configuration.GetConnectionString("FiveMDatabase")
-                ?? throw new InvalidOperationException("Connection string 'FiveMDatabase' is not configured.");
-            builder.UseMySql(mysqlConnection, ServerVersion.AutoDetect(mysqlConnection));
-        }
-        else
-        {
-            var sqliteConnection = configuration.GetConnectionString("SqliteDatabase")
-                ?? throw new InvalidOperationException("Connection string 'SqliteDatabase' is not configured.");
-            builder.UseSqlite(sqliteConnection);
-        }
+        var postgresConnection = configuration.GetConnectionString("PostgresDatabase")
+            ?? throw new InvalidOperationException("Connection string 'PostgresDatabase' is not configured.");
+        builder.UseNpgsql(postgresConnection);
 
         return new AppDbContext(builder.Options);
     }

@@ -14,6 +14,12 @@ public partial class MainWindow : Window
         DataContext = _viewModel;
     }
 
+    private async void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        await _viewModel.LoadReportsAsync();
+        await _viewModel.LoadLogsAsync();
+    }
+
     private async void LoadReports_Click(object sender, RoutedEventArgs e)
     {
         await _viewModel.LoadReportsAsync();
@@ -24,9 +30,9 @@ public partial class MainWindow : Window
         await _viewModel.SortReportsAsync();
     }
 
-    private void ApplyFilter_Click(object sender, RoutedEventArgs e)
+    private async void ApplyFilter_Click(object sender, RoutedEventArgs e)
     {
-        _viewModel.ApplyFilter();
+        await _viewModel.ApplyFilterAsync();
     }
 
     private async void ResetDemoData_Click(object sender, RoutedEventArgs e)
@@ -48,5 +54,26 @@ public partial class MainWindow : Window
     private async void AddFiftyReports_Click(object sender, RoutedEventArgs e)
     {
         await _viewModel.AddFiftyTestReportsAsync();
+    }
+
+    private async void RefreshLogs_Click(object sender, RoutedEventArgs e)
+    {
+        await _viewModel.LoadLogsAsync();
+    }
+
+    private async void ClearLogs_Click(object sender, RoutedEventArgs e)
+    {
+        var answer = MessageBox.Show(
+            "Очистить все записи логов?",
+            "Подтверждение",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning);
+
+        if (answer != MessageBoxResult.Yes)
+        {
+            return;
+        }
+
+        await _viewModel.ClearLogsAsync();
     }
 }

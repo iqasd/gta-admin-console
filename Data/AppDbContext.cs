@@ -7,6 +7,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public DbSet<Report> Reports => Set<Report>();
     public DbSet<User> Users => Set<User>();
+    public DbSet<AppLog> AppLogs => Set<AppLog>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,6 +28,16 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasKey(x => x.Id);
             entity.Property(x => x.Username).HasMaxLength(64).IsRequired();
             entity.Property(x => x.AdminClass).HasConversion<int>();
+        });
+
+        modelBuilder.Entity<AppLog>(entity =>
+        {
+            entity.ToTable("app_logs");
+            entity.HasKey(x => x.Id);
+            entity.Property(x => x.Level).HasMaxLength(16).IsRequired();
+            entity.Property(x => x.Action).HasMaxLength(64).IsRequired();
+            entity.Property(x => x.Message).HasMaxLength(512).IsRequired();
+            entity.Property(x => x.Details).HasMaxLength(2048);
         });
     }
 }

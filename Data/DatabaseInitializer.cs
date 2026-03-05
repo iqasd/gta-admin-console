@@ -1,5 +1,6 @@
 using GtaAdminReportsApp.Models;
 using GtaAdminReportsApp.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace GtaAdminReportsApp.Data;
 
@@ -14,7 +15,10 @@ public static class DatabaseInitializer
 
     public static async Task ResetAndSeedAsync(AppDbContext dbContext, CancellationToken cancellationToken = default)
     {
-        await dbContext.Database.EnsureDeletedAsync(cancellationToken);
+        await dbContext.Database.EnsureCreatedAsync(cancellationToken);
+        await dbContext.Reports.ExecuteDeleteAsync(cancellationToken);
+        await dbContext.Users.ExecuteDeleteAsync(cancellationToken);
+        await dbContext.AppLogs.ExecuteDeleteAsync(cancellationToken);
         await EnsureCreatedAndSeedAsync(dbContext, cancellationToken);
     }
 

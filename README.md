@@ -17,8 +17,7 @@
 - C# (.NET 8)
 - WPF
 - Entity Framework Core
-- SQLite (по умолчанию, без установки сервера БД)
-- MySQL 8 (опционально)
+- PostgreSQL
 
 ## Структура проекта
 
@@ -29,7 +28,8 @@
 - `ViewModels/MainWindowViewModel.cs` — логика интерфейса.
 - `MainWindow.xaml` — интерфейс.
 - `appsettings.json` — конфигурация подключения к БД.
-- `sql-init.sql` — SQL-скрипт для MySQL (если нужен внешний сервер).
+- `sql-init.sql` — SQL-скрипт создания таблиц в PostgreSQL.
+- `Services/AppLoggerService.cs` — сохранение логов действий и ошибок в БД.
 
 ## Правила сортировки
 
@@ -93,15 +93,19 @@ dotnet build -c Release
 & "C:\Program Files\dotnet\dotnet.exe" build -c Release
 ```
 
-### 4) Первый запуск (режим по умолчанию: SQLite)
+### 4) Первый запуск (PostgreSQL)
 
 ```powershell
 dotnet run
 ```
 
-При первом запуске автоматически:
-- создается файл локальной БД `fivem_local.db`;
-- создаются таблицы;
+Перед первым запуском:
+- установите PostgreSQL;
+- создайте базу данных (например, `gta_admin_db`);
+- укажите параметры подключения в `appsettings.json` (`ConnectionStrings:PostgresDatabase`).
+
+При запуске приложения автоматически:
+- создаются таблицы (если отсутствуют);
 - добавляются стартовые тестовые данные.
 
 ### 5) Базовый сценарий проверки
@@ -116,26 +120,20 @@ dotnet run
 
 ---
 
-## Настройка MySQL (опционально)
-
-По умолчанию используется SQLite. Если нужен MySQL:
+## Настройка PostgreSQL
 
 1. Откройте `appsettings.json`;
-2. Измените:
-   - `"DatabaseProvider": "MySql"`
-3. Заполните строку:
-   - `ConnectionStrings:FiveMDatabase`
-4. Создайте БД и выполните `sql-init.sql`;
-5. Запустите проект повторно.
+2. Заполните строку:
+   - `ConnectionStrings:PostgresDatabase`
+3. Создайте БД и выполните `sql-init.sql` (опционально, можно полагаться на автосоздание);
+4. Запустите проект повторно.
 
 Пример `appsettings.json`:
 
 ```json
 {
-  "DatabaseProvider": "MySql",
   "ConnectionStrings": {
-    "SqliteDatabase": "Data Source=fivem_local.db",
-    "FiveMDatabase": "Server=127.0.0.1;Port=3306;Database=fivem_db;User=fivem_user;Password=fivem_password;"
+    "PostgresDatabase": "Host=127.0.0.1;Port=5432;Database=gta_admin_db;Username=postgres;Password=postgres;"
   }
 }
 ```
@@ -168,11 +166,11 @@ dotnet publish -c Release -r win-x64 --self-contained false
   `C:\Program Files\dotnet\dotnet.exe`;
 - запустите команды через полный путь.
 
-### 2) Ошибка доступа к SQLite-файлу
+### 2) Ошибка подключения к PostgreSQL
 
-- закройте запущенные экземпляры приложения;
-- удалите `fivem_local.db` и запустите проект заново;
-- проверьте права на папку проекта.
+- проверьте, что служба PostgreSQL запущена;
+- проверьте `Host/Port/Database/Username/Password` в `appsettings.json`;
+- убедитесь, что у пользователя есть права на создание таблиц.
 
 ### 3) Не отображаются новые данные
 
