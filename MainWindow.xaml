@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:GtaAdminReportsApp"
         mc:Ignorable="d"
         Title="GTA 5 Admin Reports Manager"
+        Icon="docs/media/logo.jpg"
         Height="680"
         Width="1100"
         WindowStartupLocation="CenterScreen"
@@ -17,9 +18,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock FontSize="24"
-                   FontWeight="SemiBold"
-                   Text="Управление репортами FiveM"/>
+        <DockPanel LastChildFill="False">
+            <Image Source="docs/media/logo.jpg"
+                   Width="54"
+                   Height="54"
+                   Stretch="UniformToFill"
+                   Margin="0,0,12,0"/>
+            <TextBlock VerticalAlignment="Center"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Text="Управление репортами FiveM"/>
+        </DockPanel>
 
         <TabControl Grid.Row="1" Margin="0,16,0,0">
             <TabItem Header="Репорты">
