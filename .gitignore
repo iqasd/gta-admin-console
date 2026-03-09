@@ -5,6 +5,8 @@ obj/
 *.suo
 *.cache
 *.db
+*.db-wal
+*.db-shm
 *.pdb
 *.tmp
 *.log

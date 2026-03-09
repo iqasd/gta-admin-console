@@ -1,6 +1,6 @@
 # GTA Admin Reports App
 
-Настольное приложение для администрирования сервера GTA 5 (FiveM) с автоматической сортировкой репортов по классам администрации и журналированием действий в PostgreSQL.
+Настольное приложение для администрирования сервера GTA 5 (FiveM) с автоматической сортировкой репортов по классам администрации и журналированием действий в БД (PostgreSQL/SQLite).
 
 ## Ключевые возможности
 
@@ -31,7 +31,7 @@
 - C# / .NET 8
 - WPF
 - Entity Framework Core 8
-- PostgreSQL
+- PostgreSQL / SQLite
 - Npgsql
 
 ## Архитектура
@@ -56,8 +56,10 @@
 
 ## Быстрый запуск
 
-1. Установить PostgreSQL и создать БД (например, `gta_admin_db`).
-2. Настроить строку подключения в `appsettings.json`.
+1. Выбрать провайдер БД в `appsettings.json`:
+   - `DatabaseProvider: "Postgres"` или
+   - `DatabaseProvider: "Sqlite"`
+2. Настроить соответствующую строку подключения.
 3. Выполнить:
 
 ```powershell
@@ -65,12 +67,24 @@ dotnet restore
 dotnet run
 ```
 
-Пример подключения:
+Пример (PostgreSQL):
 
 ```json
 {
+  "DatabaseProvider": "Postgres",
   "ConnectionStrings": {
     "PostgresDatabase": "Host=127.0.0.1;Port=5432;Database=gta_admin_db;Username=postgres;Password=CHANGE_ME;"
+  }
+}
+```
+
+Пример (SQLite для показа на чужом ПК):
+
+```json
+{
+  "DatabaseProvider": "Sqlite",
+  "ConnectionStrings": {
+    "SqliteDatabase": "Data Source=data/gta_admin.db"
   }
 }
 ```
