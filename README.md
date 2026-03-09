@@ -26,15 +26,6 @@
 | Результат сортировки | ![Sorting](docs/media/screen-sorting.png) |
 | Вкладка логов | ![Logs](docs/media/screen-logs.png) |
 
-### Загруженные скриншоты (текущая сессия)
-
-| Снимок | Превью |
-|---|---|
-| Репорты (до сортировки) | ![Reports NotAssigned](docs/media/screen-reports-notassigned.png) |
-| Ошибка подключения #1 | ![Auth Error 1](docs/media/screen-error-auth-1.png) |
-| Ошибка подключения #2 | ![Auth Error 2](docs/media/screen-error-auth-2.png) |
-| Ошибка подключения #3 | ![Auth Error 3](docs/media/screen-error-auth-3.png) |
-
 ## Технологический стек
 
 - C# / .NET 8
