@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="780" viewBox="0 0 1400 780">
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #1f2937; }
+      .subtitle { font: 700 20px Arial, sans-serif; fill: #111827; }
+      .label { font: 16px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .box { fill: #ffffff; stroke: #1f2937; stroke-width: 2; rx: 10; ry: 10; }
+      .queue { fill: #f9fafb; stroke: #4b5563; stroke-width: 2; rx: 10; ry: 10; }
+      .bad { fill: #fff1f2; stroke: #e11d48; stroke-width: 2; rx: 12; ry: 12; }
+      .good { fill: #ecfeff; stroke: #0891b2; stroke-width: 2; rx: 12; ry: 12; }
+      .note { fill: #fefce8; stroke: #ca8a04; stroke-width: 2; rx: 10; ry: 10; }
+      .arrow { stroke: #111827; stroke-width: 2.5; fill: none; marker-end: url(#arrowHead); }
+      .arrowSoft { stroke: #6b7280; stroke-width: 2; fill: none; marker-end: url(#arrowHeadSoft); }
+      .split { stroke-dasharray: 8 6; }
+    </style>
+    <marker id="arrowHead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#111827"/>
+    </marker>
+    <marker id="arrowHeadSoft" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="780" fill="#ffffff"/>
+
+  <text x="700" y="44" text-anchor="middle" class="title">
+     8AC=>: 1  >45;8@>20=85 ?@>F5AA0 >1@01>B:8 @5?>@B>2 (AS-IS / TO-BE)
+  </text>
+
+  <!-- AS-IS -->
+  <rect x="40" y="80" width="640" height="640" class="bad"/>
+  <text x="360" y="118" text-anchor="middle" class="subtitle">AS-IS (B5:CI55 A>AB>O=85)</text>
+
+  <rect x="90" y="160" width="220" height="90" class="box"/>
+  <text x="200" y="202" text-anchor="middle" class="label">3@>:8 A5@25@0</text>
+  <text x="200" y="224" text-anchor="middle" class="small">$>@<8@CNB @5?>@BK</text>
+
+  <rect x="370" y="160" width="240" height="90" class="box"/>
+  <text x="490" y="202" text-anchor="middle" class="label">txAdmin</text>
+  <text x="490" y="224" text-anchor="middle" class="small">48=0O >1I0O >G5@54L</text>
+
+  <rect x="160" y="320" width="400" height="100" class="queue"/>
+  <text x="360" y="360" text-anchor="middle" class="label"> CG=0O A>@B8@>2:0 >1@0I5=89</text>
+  <text x="360" y="384" text-anchor="middle" class="small">?@545;5=85 ?@8>@8B5B0 04<8=8AB@0B>@><</text>
+
+  <rect x="90" y="500" width="160" height="90" class="box"/>
+  <text x="170" y="540" text-anchor="middle" class="label">Junior</text>
+  <text x="170" y="562" text-anchor="middle" class="small">Admin</text>
+
+  <rect x="280" y="500" width="160" height="90" class="box"/>
+  <text x="360" y="540" text-anchor="middle" class="label">Senior</text>
+  <text x="360" y="562" text-anchor="middle" class="small">Admin</text>
+
+  <rect x="470" y="500" width="160" height="90" class="box"/>
+  <text x="550" y="540" text-anchor="middle" class="label">Super</text>
+  <text x="550" y="562" text-anchor="middle" class="small">Admin</text>
+
+  <rect x="90" y="620" width="540" height="70" class="note"/>
+  <text x="360" y="650" text-anchor="middle" class="label">@>1;5<K: 7045@6:8, ?5@53@C7:0, AC1J5:B82=>ABL @0A?@545;5=8O</text>
+  <text x="360" y="672" text-anchor="middle" class="small">KA>:0O 7028A8<>ABL >B @CG=KE 459AB289</text>
+
+  <path d="M310 205 L370 205" class="arrow"/>
+  <path d="M490 250 L490 320 L360 320" class="arrow"/>
+  <path d="M360 420 L170 500" class="arrowSoft split"/>
+  <path d="M360 420 L360 500" class="arrowSoft split"/>
+  <path d="M360 420 L550 500" class="arrowSoft split"/>
+
+  <!-- TO-BE -->
+  <rect x="720" y="80" width="640" height="640" class="good"/>
+  <text x="1040" y="118" text-anchor="middle" class="subtitle">TO-BE (F5;52>5 A>AB>O=85)</text>
+
+  <rect x="770" y="160" width="220" height="90" class="box"/>
+  <text x="880" y="202" text-anchor="middle" class="label">3@>:8 A5@25@0</text>
+  <text x="880" y="224" text-anchor="middle" class="small">$>@<8@CNB @5?>@BK</text>
+
+  <rect x="1050" y="160" width="250" height="90" class="box"/>
+  <text x="1175" y="202" text-anchor="middle" class="label">>4C;L >1@01>B:8</text>
+  <text x="1175" y="224" text-anchor="middle" class="small">2B><0B8G5A:0O :;0AA8D8:0F8O</text>
+
+  <rect x="790" y="320" width="500" height="100" class="queue"/>
+  <text x="1040" y="360" text-anchor="middle" class="label">;3>@8B< @0A?@545;5=8O ?> :;0AA0< 4>ABC?0</text>
+  <text x="1040" y="384" text-anchor="middle" class="small">"8? =0@CH5=8O + ?@8>@8B5B + 70?8AL 2 ;>3</text>
+
+  <rect x="770" y="500" width="160" height="90" class="box"/>
+  <text x="850" y="540" text-anchor="middle" class="label">Junior</text>
+  <text x="850" y="562" text-anchor="middle" class="small">Admin Queue</text>
+
+  <rect x="960" y="500" width="160" height="90" class="box"/>
+  <text x="1040" y="540" text-anchor="middle" class="label">Senior</text>
+  <text x="1040" y="562" text-anchor="middle" class="small">Admin Queue</text>
+
+  <rect x="1150" y="500" width="160" height="90" class="box"/>
+  <text x="1230" y="540" text-anchor="middle" class="label">Super</text>
+  <text x="1230" y="562" text-anchor="middle" class="small">Admin Queue</text>
+
+  <rect x="770" y="620" width="540" height="70" class="note"/>
+  <text x="1040" y="650" text-anchor="middle" class="label"> 57C;LB0B: A>:@0I5=85 2@5<5=8 @50:F88 8 @02=><5@=0O =03@C7:0</text>
+  <text x="1040" y="672" text-anchor="middle" class="small">>2KH5=85 ?@>7@0G=>AB8 70 AG5B 6C@=0;8@>20=8O >?5@0F89</text>
+
+  <path d="M990 205 L1050 205" class="arrow"/>
+  <path d="M1175 250 L1175 320 L1040 320" class="arrow"/>
+  <path d="M1040 420 L850 500" class="arrowSoft"/>
+  <path d="M1040 420 L1040 500" class="arrowSoft"/>
+  <path d="M1040 420 L1230 500" class="arrowSoft"/>
+</svg>

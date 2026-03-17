@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="980" viewBox="0 0 1700 980">
+  <defs>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #111827; }
+      .entity { fill: #ffffff; stroke: #1f2937; stroke-width: 2.2; rx: 10; ry: 10; }
+      .head { fill: #eef2ff; stroke: #1f2937; stroke-width: 2.2; rx: 10; ry: 10; }
+      .entityTitle { font: 700 20px Arial, sans-serif; fill: #1e3a8a; }
+      .field { font: 15px Arial, sans-serif; fill: #111827; }
+      .idx { font: 700 14px Arial, sans-serif; fill: #b45309; }
+      .line { stroke: #374151; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .note { fill: #fefce8; stroke: #ca8a04; stroke-width: 2; rx: 10; ry: 10; }
+      .noteText { font: 15px Arial, sans-serif; fill: #92400e; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#374151"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1700" height="980" fill="#ffffff"/>
+  <text x="850" y="46" text-anchor="middle" class="title">
+     8AC=>: 8  ER-4803@0<<0 107K 40==KE A8AB5<K 04<8=8AB@8@>20=8O
+  </text>
+
+  <!-- Admin_Classes -->
+  <rect x="90" y="120" width="300" height="210" class="entity"/>
+  <rect x="90" y="120" width="300" height="46" class="head"/>
+  <text x="240" y="150" text-anchor="middle" class="entityTitle">Admin_Classes</text>
+  <text x="110" y="188" class="field">PK  class_id</text>
+  <text x="110" y="214" class="field">class_name  (Junior/Senior/Head)</text>
+  <text x="110" y="240" class="field">description</text>
+  <text x="110" y="266" class="field">priority_level</text>
+
+  <!-- Users -->
+  <rect x="480" y="120" width="330" height="250" class="entity"/>
+  <rect x="480" y="120" width="330" height="46" class="head"/>
+  <text x="645" y="150" text-anchor="middle" class="entityTitle">Users</text>
+  <text x="500" y="188" class="field">PK  user_id</text>
+  <text x="500" y="214" class="field">username</text>
+  <text x="500" y="240" class="field">is_admin</text>
+  <text x="500" y="266" class="field">FK  admin_class -> Admin_Classes.class_id</text>
+  <text x="500" y="292" class="field">created_at</text>
+  <text x="500" y="318" class="field">last_seen_at</text>
+
+  <!-- Reports -->
+  <rect x="900" y="90" width="390" height="350" class="entity"/>
+  <rect x="900" y="90" width="390" height="46" class="head"/>
+  <text x="1095" y="120" text-anchor="middle" class="entityTitle">Reports</text>
+  <text x="920" y="158" class="field">PK  report_id</text>
+  <text x="920" y="184" class="field">FK  user_id -> Users.user_id</text>
+  <text x="920" y="210" class="field">report_type</text>
+  <text x="920" y="236" class="field">description</text>
+  <text x="920" y="262" class="field">priority</text>
+  <text x="920" y="288" class="field">status</text>
+  <text x="920" y="314" class="field">assigned_admin_class</text>
+  <text x="920" y="340" class="field">created_at</text>
+  <text x="920" y="366" class="field">processed_at</text>
+  <text x="920" y="398" class="idx">INDEX: report_type</text>
+
+  <!-- Report_Queue -->
+  <rect x="1320" y="120" width="300" height="250" class="entity"/>
+  <rect x="1320" y="120" width="300" height="46" class="head"/>
+  <text x="1470" y="150" text-anchor="middle" class="entityTitle">Report_Queue</text>
+  <text x="1340" y="188" class="field">PK  queue_id</text>
+  <text x="1340" y="214" class="field">FK  report_id -> Reports.report_id</text>
+  <text x="1340" y="240" class="field">FK  admin_class -> Admin_Classes.class_id</text>
+  <text x="1340" y="266" class="field">queue_status</text>
+  <text x="1340" y="292" class="field">queued_at</text>
+  <text x="1340" y="318" class="field">dequeued_at</text>
+  <text x="1340" y="348" class="idx">INDEX: admin_class</text>
+
+  <!-- Admin_Actions -->
+  <rect x="420" y="520" width="420" height="300" class="entity"/>
+  <rect x="420" y="520" width="420" height="46" class="head"/>
+  <text x="630" y="550" text-anchor="middle" class="entityTitle">Admin_Actions</text>
+  <text x="440" y="588" class="field">PK  action_id</text>
+  <text x="440" y="614" class="field">FK  report_id -> Reports.report_id</text>
+  <text x="440" y="640" class="field">FK  admin_user_id -> Users.user_id</text>
+  <text x="440" y="666" class="field">action_type</text>
+  <text x="440" y="692" class="field">action_result</text>
+  <text x="440" y="718" class="field">comment</text>
+  <text x="440" y="744" class="field">created_at</text>
+  <text x="440" y="770" class="field">duration_sec</text>
+
+  <!-- Admin_Statistics -->
+  <rect x="980" y="560" width="440" height="250" class="entity"/>
+  <rect x="980" y="560" width="440" height="46" class="head"/>
+  <text x="1200" y="590" text-anchor="middle" class="entityTitle">Admin_Statistics</text>
+  <text x="1000" y="628" class="field">PK  stats_id</text>
+  <text x="1000" y="654" class="field">FK  admin_user_id -> Users.user_id</text>
+  <text x="1000" y="680" class="field">FK  admin_class -> Admin_Classes.class_id</text>
+  <text x="1000" y="706" class="field">period_date</text>
+  <text x="1000" y="732" class="field">processed_reports_count</text>
+  <text x="1000" y="758" class="field">avg_response_time_sec</text>
+  <text x="1000" y="784" class="field">critical_reports_count</text>
+
+  <!-- Relationships -->
+  <path d="M390 220 L480 220" class="line"/>
+  <path d="M810 210 L900 210" class="line"/>
+  <path d="M1290 230 L1320 230" class="line"/>
+  <path d="M1110 440 L1110 560" class="line"/>
+  <path d="M900 300 L760 520" class="line"/>
+  <path d="M620 370 L620 520" class="line"/>
+
+  <!-- Note -->
+  <rect x="70" y="870" width="1560" height="76" class="note"/>
+  <text x="850" y="900" text-anchor="middle" class="noteText">
+    ;NG52K5 ACI=>AB8: Users, Admin_Classes, Reports, Report_Queue, Admin_Actions, Admin_Statistics.
+  </text>
+  <text x="850" y="926" text-anchor="middle" class="noteText">
+    ;O CA:>@5=8O A>@B8@>2:8 8 <0@H@CB870F88 8A?>;L7CNBAO 8=45:AK ?> ?>;O< report_type 8 admin_class.
+  </text>
+</svg>
