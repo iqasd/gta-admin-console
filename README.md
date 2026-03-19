@@ -100,7 +100,18 @@ dotnet run
 
 - Полная инструкция установки: `INSTALL.md`
 - SQL-скрипт: `sql-init.sql`
+- Готовая PostgreSQL БД: `db/postgres/bootstrap.sql`
 - Папка для медиа в README: `docs/media/README_MEDIA.md`
+
+## Готовая БД для PostgreSQL
+
+Быстрый вариант для учителя/демонстрации:
+
+```powershell
+psql -h 127.0.0.1 -p 5432 -U postgres -d gta_admin_db -f "db/postgres/bootstrap.sql"
+```
+
+Скрипт создаёт таблицы и стартовые записи (`users`, `reports`, `app_logs`).
 
 ## Публикация .exe
 
